@@ -57,4 +57,4 @@ userSchema.methods.generateAccessToken = async function(){
 
 
 // exporting the user schema
-export const User = mongoose.connect("User", userSchema)
+export const User = mongoose.model("User", userSchema)
