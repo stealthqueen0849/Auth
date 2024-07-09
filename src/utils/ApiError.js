@@ -1,7 +1,7 @@
 class ApiError extends Error{
     constructor(
         message = "Something went wrong on server side",
-        status = 500,
+        status,
         errors = "",
     ){
         super(message);

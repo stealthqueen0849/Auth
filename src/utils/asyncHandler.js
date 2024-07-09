@@ -4,10 +4,10 @@ const asyncHandler = (request)=>{
             await request(req, res, next);
         } catch (error) {
             return res
-                    .status(500)
+                    .status(error.status || 500)
                     .json({
-                        message:"Something went wrong",
-                        error: error.message
+                        message:error.message,
+                        success:false
                     })
         }
     }
