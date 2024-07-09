@@ -1,7 +1,7 @@
 import asyncHandler from "../utils/asyncHandler.js";
-import ApiError from "../utils/ApiError.js"
-import ApiResponse from "../utils/ApiResponse.js"
-import { User } from "../models/user.models.js";
+import {ApiError} from "../utils/ApiError.js"
+import {ApiResponse} from "../utils/ApiResponse.js"
+import {User} from "../models/user.model.js";
 
 const signup = asyncHandler(async (req, res, next)=>{
 
@@ -96,3 +96,10 @@ const logout = asyncHandler(async (req, res, next) =>{
     */
    
 })
+
+export {
+    signup,
+    login,
+    logout
+
+}
