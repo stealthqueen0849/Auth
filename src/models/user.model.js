@@ -19,7 +19,6 @@ const userSchema = new Schema({
     password:{
         type : String,
         required : true,
-        unique : true,
         minlength : 8
     }
 },{
@@ -27,11 +26,10 @@ const userSchema = new Schema({
 })
 
 //encrypting the password before saving it.
-userSchema.pre("save", async (req, res, next)=>{
-    if(!(this.isModified === "password")) return next();
+userSchema.pre("save", async function(next){
+    if (!this.isModified("password")) return next();
     const salt = await bcrypt.genSalt(10);
-    const encryptedPassword = await bcrypt.hash(this.password, salt)
-    this.password = encryptedPassword;
+    this.password = await bcrypt.hash(this.password, salt);
     next();
 })
 
